@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>DND Bar POS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="dark">
+
+<header class="header">
+  <div>
+    <h1>🎲 DND Bar — Панель официанта</h1>
+    <div class="active-tab">
+      Текущий гость: <span id="currentGuest">не выбран</span>
+    </div>
+  </div>
+
+  <button id="themeToggle" class="theme-btn">🌙</button>
+</header>
+
+<main class="layout">
+
+  <!-- Левая колонка -->
+  <aside class="sidebar">
+
+    <section class="card">
+      <h2>Открыть счёт</h2>
+
+      <label>
+        Имя гостя
+        <input id="guestNameInput" type="text" placeholder="Например: Alex">
+      </label>
+
+      <label>
+        Официант
+        <select id="waiterSelect"></select>
+      </label>
+
+      <button id="openTabBtn" class="primary">Открыть счёт</button>
+    </section>
+
+    <section class="card">
+      <h2>Открытые счета</h2>
+      <ul id="tabsList" class="tabs-list"></ul>
+    </section>
+
+  </aside>
+
+  <!-- Центр -->
+  <section class="content">
+
+    <section class="card">
+      <h2>Добавить позицию</h2>
+
+      <label>
+        Категория
+        <select id="categorySelect">
+          <option value="all">Все</option>
+          <option value="wine">Вино</option>
+          <option value="cocktails">Коктейли</option>
+          <option value="drinks">Напитки</option>
+          <option value="snacks">Снеки</option>
+        </select>
+      </label>
+
+      <label>
+        Товар
+        <select id="menuSelect"></select>
+      </label>
+
+      <label>
+        Количество
+        <div class="qty">
+          <button id="minusBtn">-</button>
+          <input id="qtyInput" type="number" value="1" min="1">
+          <button id="plusBtn">+</button>
+        </div>
+      </label>
+
+      <div class="price-preview">
+        Цена за шт: <b><span id="unitPrice">0.00</span> ₾</b><br>
+        Сумма: <b><span id="lineTotal">0.00</span> ₾</b>
+      </div>
+
+      <button id="addItemBtn" class="primary">Добавить</button>
+    </section>
+
+  </section>
+
+  <!-- Правая колонка -->
+  <aside class="order">
+
+    <section class="card">
+      <h2>Текущий счёт</h2>
+
+      <table>
+        <thead>
+        <tr>
+          <th>Товар</th>
+          <th>Кол-во</th>
+          <th>Цена</th>
+          <th>Сумма</th>
+        </tr>
+        </thead>
+        <tbody id="orderTable"></tbody>
+      </table>
+
+      <div class="total">
+        Итого: <b><span id="orderTotal">0.00</span> ₾</b>
+      </div>
+
+      <div class="actions">
+        <button id="closeTabBtn" class="danger">Закрыть счёт</button>
+      </div>
+
+    </section>
+
+  </aside>
+
+</main>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
